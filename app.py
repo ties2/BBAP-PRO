@@ -81,10 +81,10 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html')
 
-@app.route('/dashboard')
+@app.route('/templates/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard.html')
+    return render_template('Dashboard.html')
 
 @app.route('/logout')
 @login_required
