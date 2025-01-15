@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Bounty Dashboard</title>
+    <!-- Bootstrap for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #11574A; /* Dark green background */
+            color: white; /* White text for readability */
+        }
+        .dashboard-container {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+            border-radius: 10px; /* Rounded corners */
+            margin-top: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for cards */
+            color: black; /* Dark text for contrast on cards */
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .navbar-brand {
+            color: #00FFAB !important; /* Bright green brand text */
+        }
+        .nav-link {
+            color: #FFFFFF !important; /* White links in navbar */
+        }
+        .btn-primary {
+            background-color: #00FFAB; /* Custom green for buttons */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #00D994; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dashboard Container -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Bug Bounty Programs Section -->
+            <div class="col-md-6 dashboard-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bug Bounty Programs</h5>
+                        <ul>
+                            <li><strong>Program 1:</strong> Example Bounty Program - High Priority Vulnerabilities</li>
+                            <li><strong>Program 2:</strong> Example Bounty Program - Medium Priority Vulnerabilities</li>
+                            <li><strong>Program 3:</strong> Example Bounty Program - Low Priority Vulnerabilities</li>
+                            <li><strong>Program 4:</strong> Example Bounty Program - High Priority Vulnerabilities</li>
+                            <li><strong>Program 5:</strong> Example Bounty Program - Medium Priority Vulnerabilities</li>
+                            <li><strong>Program 6:</strong> Example Bounty Program - Medium Priority Vulnerabilities</li>
+                        </ul>
+                        <button class="btn btn-primary">View All Programs</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pie Chart Section -->
+            <div class="col-md-6 dashboard-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Vulnerability Priority Distribution</h5>
+                        <!-- Pie Chart Canvas -->
+                        <canvas id="vulnerabilityPriorityChart" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // Data for the pie chart: Number of programs with High, Medium, and Low priority vulnerabilities
+        var ctx = document.getElementById('vulnerabilityPriorityChart').getContext('2d');
+        var vulnerabilityPriorityChart = new Chart(ctx, {
+            type: 'pie',  // Pie chart
+            data: {
+                labels: ['High Priority', 'Medium Priority', 'Low Priority'],  // Labels for the chart
+                datasets: [{
+                    data: [50, 80, 10],  // Number of programs with each priority (1 program for each priority in this example)
+                    backgroundColor: ['#ff6666', '#ffcc00', '#66cc66'],  // Colors for each section
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + ' programs';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
