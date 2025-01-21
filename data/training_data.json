@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "description": "Found SQL injection vulnerability in login form where single quotes are not properly escaped",
+      "category": "sql_injection"
+    },
+    {
+      "description": "Cross-site scripting vulnerability in comment section allows injection of arbitrary JavaScript",
+      "category": "xss"
+    },
+    {
+      "description": "Authentication bypass possible by modifying JWT token claims",
+      "category": "authentication"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+query,label
+'; UPDATE users SET password='hacked' --,1
+DELETE FROM orders WHERE order_id=1001;,0
+' HAVING 1=1 --,1
+' OR '1'='1,1
+SELECT * FROM users WHERE id=1 OR 1=1,1
+"' UNION SELECT 1, 2, 3 --",1
+' AND 1=2 --,1
+' OR 'x'='x,1
+'; DROP TABLE users; --,1
+"INSERT INTO orders (user_id, product_id, quantity) VALUES (1, 101, 2);",0
+1 OR 1=1 --,1
+"SELECT id, username FROM users WHERE status='active';",0
+SELECT email FROM customers WHERE id='123';,0
+"SELECT name, age FROM employees WHERE department='HR';",0
+SELECT COUNT(*) FROM products WHERE price > 100;,0
+SELECT * FROM users WHERE username='admin' AND password='password';,0
+UPDATE users SET password='newpassword' WHERE username='john';,0
+' OR EXISTS(SELECT * FROM users) --,1
