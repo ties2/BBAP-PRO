@@ -31,7 +31,8 @@ class DataProcessor:
     def load_data(self, file_path: str) -> Dict[str, List[Any]]:
         """Load and preprocess training data from JSON file."""
         with open(file_path, 'r') as f:
-            data = json.load(f)
+            raw_data = json.load(f)
+            data = raw_data['data']  # Access the 'data' array from the JSON
         
         texts = [self.preprocess_text(item['description']) for item in data]
         labels = [item['category'] for item in data]
